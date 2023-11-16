@@ -1,0 +1,242 @@
+{
+	"name": "CosmosDB_DL_PARQUET",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "cosmos_parquet_11.parquet",
+				"fileSystem": "cosmosdbcontainer11"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "CountryName",
+				"type": "UTF8"
+			},
+			{
+				"name": "CountryCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "RegionName",
+				"type": "UTF8"
+			},
+			{
+				"name": "RegionCode",
+				"type": "UTF8"
+			},
+			{
+				"name": "Jurisdiction",
+				"type": "UTF8"
+			},
+			{
+				"name": "Date",
+				"type": "INT96"
+			},
+			{
+				"name": "C1_School_closing",
+				"type": "INT64"
+			},
+			{
+				"name": "C1_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C2_Workplace_closing",
+				"type": "INT64"
+			},
+			{
+				"name": "C2_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C3_Cancel_public_events",
+				"type": "INT64"
+			},
+			{
+				"name": "C3_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C4_Restrictions_on_gatherings",
+				"type": "INT64"
+			},
+			{
+				"name": "C4_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C5_Close_public_transport",
+				"type": "INT64"
+			},
+			{
+				"name": "C5_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C6_Stay_at_home_requirements",
+				"type": "INT64"
+			},
+			{
+				"name": "C6_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C7_Restrictions_on_internal_movement",
+				"type": "INT64"
+			},
+			{
+				"name": "C7_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "C8_International_travel_controls",
+				"type": "INT64"
+			},
+			{
+				"name": "E1_Income_support",
+				"type": "INT64"
+			},
+			{
+				"name": "E1_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "E2_Debt_contract_relief",
+				"type": "INT64"
+			},
+			{
+				"name": "E3_Fiscal_measures",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "E4_International_support",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "H1_Public_information_campaigns",
+				"type": "INT64"
+			},
+			{
+				"name": "H1_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "H2_Testing_policy",
+				"type": "INT64"
+			},
+			{
+				"name": "H3_Contact_tracing",
+				"type": "INT64"
+			},
+			{
+				"name": "H4_Emergency_investment_in_healthcare",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "H5_Investment_in_vaccines",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "H6_Facial_Coverings",
+				"type": "INT64"
+			},
+			{
+				"name": "H6_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "H7_Vaccination_policy",
+				"type": "INT64"
+			},
+			{
+				"name": "H7_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "H8_Protection_of_elderly_people",
+				"type": "INT64"
+			},
+			{
+				"name": "H8_Flag",
+				"type": "INT64"
+			},
+			{
+				"name": "M1_Wildcard",
+				"type": "INT64"
+			},
+			{
+				"name": "StringencyIndex",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "StringencyIndexForDisplay",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "StringencyLegacyIndex",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "StringencyLegacyIndexForDisplay",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "GovernmentResponseIndex",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "GovernmentResponseIndexForDisplay",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ContainmentHealthIndex",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "ContainmentHealthIndexForDisplay",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EconomicSupportIndex",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "EconomicSupportIndexForDisplay",
+				"type": "DOUBLE"
+			},
+			{
+				"name": "id",
+				"type": "UTF8"
+			},
+			{
+				"name": "rid",
+				"type": "UTF8"
+			},
+			{
+				"name": "self",
+				"type": "UTF8"
+			},
+			{
+				"name": "etag",
+				"type": "UTF8"
+			},
+			{
+				"name": "attachments",
+				"type": "UTF8"
+			},
+			{
+				"name": "ts",
+				"type": "INT64"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

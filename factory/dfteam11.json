@@ -1,0 +1,9 @@
+{
+	"name": "dfteam11",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "3d6c0e70-74f8-4758-896c-d015d37b957d",
+		"tenantId": "d57d32cc-c121-488f-b07b-dfe705680c71"
+	}
+}

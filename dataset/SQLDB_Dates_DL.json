@@ -1,0 +1,102 @@
+{
+	"name": "SQLDB_Dates_DL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sqldb_dates.parquet",
+				"fileSystem": "sqldbcontainer11"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "DateKey",
+				"type": "INT32"
+			},
+			{
+				"name": "FullDate",
+				"type": "DATE"
+			},
+			{
+				"name": "isWeekDay",
+				"type": "BOOLEAN"
+			},
+			{
+				"name": "DayOfWeek",
+				"type": "INT32"
+			},
+			{
+				"name": "DayOfMonth",
+				"type": "INT32"
+			},
+			{
+				"name": "DayOfQuarter",
+				"type": "INT32"
+			},
+			{
+				"name": "DayOfYear",
+				"type": "INT32"
+			},
+			{
+				"name": "DayName",
+				"type": "UTF8"
+			},
+			{
+				"name": "WeekOfYear",
+				"type": "INT32"
+			},
+			{
+				"name": "WeekName",
+				"type": "UTF8"
+			},
+			{
+				"name": "MonthOfYear",
+				"type": "INT32"
+			},
+			{
+				"name": "MonthName",
+				"type": "UTF8"
+			},
+			{
+				"name": "CalendarQuarter",
+				"type": "INT32"
+			},
+			{
+				"name": "CalendarQuarterName",
+				"type": "UTF8"
+			},
+			{
+				"name": "CalendarYear",
+				"type": "INT32"
+			},
+			{
+				"name": "FiscalMonth",
+				"type": "INT32"
+			},
+			{
+				"name": "FiscalMonthName",
+				"type": "UTF8"
+			},
+			{
+				"name": "FiscalQuarter",
+				"type": "INT32"
+			},
+			{
+				"name": "FiscalQuarterName",
+				"type": "UTF8"
+			},
+			{
+				"name": "FiscalYear",
+				"type": "INT32"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

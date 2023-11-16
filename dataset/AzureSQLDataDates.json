@@ -1,0 +1,110 @@
+{
+	"name": "AzureSQLDataDates",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureSqlDatabase1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "AzureSqlTable",
+		"schema": [
+			{
+				"name": "DateKey",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FullDate",
+				"type": "date"
+			},
+			{
+				"name": "isWeekDay",
+				"type": "bit"
+			},
+			{
+				"name": "DayOfWeek",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DayOfMonth",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DayOfQuarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DayOfYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "DayName",
+				"type": "varchar"
+			},
+			{
+				"name": "WeekOfYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "WeekName",
+				"type": "varchar"
+			},
+			{
+				"name": "MonthOfYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "MonthName",
+				"type": "varchar"
+			},
+			{
+				"name": "CalendarQuarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "CalendarQuarterName",
+				"type": "varchar"
+			},
+			{
+				"name": "CalendarYear",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FiscalMonth",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FiscalMonthName",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalQuarter",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "FiscalQuarterName",
+				"type": "varchar"
+			},
+			{
+				"name": "FiscalYear",
+				"type": "int",
+				"precision": 10
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Dates"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

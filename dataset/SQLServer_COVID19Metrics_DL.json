@@ -1,0 +1,82 @@
+{
+	"name": "SQLServer_COVID19Metrics_DL",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "AzureDataLakeStorage1",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "Parquet",
+		"typeProperties": {
+			"location": {
+				"type": "AzureBlobFSLocation",
+				"fileName": "sqlserver_covid19metrics.parquet",
+				"fileSystem": "vmcontainer11"
+			},
+			"compressionCodec": "snappy"
+		},
+		"schema": [
+			{
+				"name": "ID",
+				"type": "INT32"
+			},
+			{
+				"name": "Updated",
+				"type": "DATE"
+			},
+			{
+				"name": "Confirmed",
+				"type": "INT32"
+			},
+			{
+				"name": "Confirmed_Change",
+				"type": "INT32"
+			},
+			{
+				"name": "Deaths",
+				"type": "INT32"
+			},
+			{
+				"name": "Deaths_Change",
+				"type": "INT32"
+			},
+			{
+				"name": "Recovered",
+				"type": "INT32"
+			},
+			{
+				"name": "Recovered_Change",
+				"type": "INT32"
+			},
+			{
+				"name": "Latitude",
+				"type": "DECIMAL",
+				"precision": 10,
+				"scale": 5
+			},
+			{
+				"name": "Longitude",
+				"type": "DECIMAL",
+				"precision": 10,
+				"scale": 5
+			},
+			{
+				"name": "ISO2",
+				"type": "UTF8"
+			},
+			{
+				"name": "ISO3",
+				"type": "UTF8"
+			},
+			{
+				"name": "Country_Region",
+				"type": "UTF8"
+			},
+			{
+				"name": "load_time",
+				"type": "INT96"
+			}
+		]
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}

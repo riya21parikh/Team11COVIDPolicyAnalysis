@@ -1,0 +1,87 @@
+{
+	"name": "SQLServerDataCOVID19Metrics",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "VM_SQLServerDataSource",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [
+			{
+				"name": "ID",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Updated",
+				"type": "date"
+			},
+			{
+				"name": "Confirmed",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Confirmed_Change",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Deaths",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Deaths_Change",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Recovered",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Recovered_Change",
+				"type": "int",
+				"precision": 10
+			},
+			{
+				"name": "Latitude",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 5
+			},
+			{
+				"name": "Longitude",
+				"type": "decimal",
+				"precision": 10,
+				"scale": 5
+			},
+			{
+				"name": "ISO2",
+				"type": "varchar"
+			},
+			{
+				"name": "ISO3",
+				"type": "varchar"
+			},
+			{
+				"name": "Country_Region",
+				"type": "varchar"
+			},
+			{
+				"name": "load_time",
+				"type": "datetime",
+				"precision": 23,
+				"scale": 3
+			}
+		],
+		"typeProperties": {
+			"schema": "dbo",
+			"table": "Covid19_Metrics"
+		}
+	},
+	"type": "Microsoft.DataFactory/factories/datasets"
+}
