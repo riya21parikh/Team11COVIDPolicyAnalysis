@@ -25,15 +25,15 @@
 						"referenceName": "ODS_Cases_Sink",
 						"type": "DatasetReference"
 					},
-					"name": "sink1"
+					"name": "CasesSink"
 				}
 			],
 			"transformations": [
 				{
-					"name": "union1"
+					"name": "Union"
 				},
 				{
-					"name": "select1"
+					"name": "Select"
 				}
 			],
 			"scriptLines": [
@@ -75,8 +75,8 @@
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet') ~> SQLServerCOVID19Metrics",
-				"SQLDBCOVID19Metrics, SQLServerCOVID19Metrics union(byName: true)~> union1",
-				"union1 select(mapColumn(",
+				"SQLDBCOVID19Metrics, SQLServerCOVID19Metrics union(byName: true)~> Union",
+				"Union select(mapColumn(",
 				"          ID,",
 				"          Updated,",
 				"          Confirmed,",
@@ -84,15 +84,15 @@
 				"          Country_Region",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"select1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> Select",
+				"Select sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> CasesSink"
 			]
 		}
 	}
