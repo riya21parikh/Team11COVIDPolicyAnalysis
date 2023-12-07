@@ -1,0 +1,59 @@
+{
+	"name": "ODS_Geography_DF",
+	"properties": {
+		"type": "MappingDataFlow",
+		"typeProperties": {
+			"sources": [
+				{
+					"dataset": {
+						"referenceName": "SQLDB_Country_DL",
+						"type": "DatasetReference"
+					},
+					"name": "SQLDBCountry"
+				}
+			],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "ODS_Geography_Sink",
+						"type": "DatasetReference"
+					},
+					"name": "GeographSink"
+				}
+			],
+			"transformations": [
+				{
+					"name": "Select"
+				}
+			],
+			"scriptLines": [
+				"source(output(",
+				"          Country as string,",
+				"          CountryCode as string,",
+				"          Latitude as decimal(10,5),",
+				"          Longitude as decimal(10,5)",
+				"     ),",
+				"     allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     ignoreNoFilesFound: false,",
+				"     format: 'parquet') ~> SQLDBCountry",
+				"SQLDBCountry select(mapColumn(",
+				"          Country,",
+				"          CountryCode,",
+				"          Latitude,",
+				"          Longitude",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Select",
+				"Select sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> GeographSink"
+			]
+		}
+	}
+}
