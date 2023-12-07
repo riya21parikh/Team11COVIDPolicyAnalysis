@@ -1,0 +1,17 @@
+{
+	"name": "Fact _Tables",
+	"properties": {
+		"content": {
+			"query": "-- Cases Fact Table\nCREATE TABLE FactCases (\n    CaseID INT PRIMARY KEY,\n    DateKey INT,\n    GeoKey INT,\n    Updated DATE,\n    Confirmed INT,\n    Confirmed_Change INT,\n    FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey),\n    FOREIGN KEY (GeoKey) REFERENCES DimGeography(GeoKey)\n);\n\n-- Deaths Fact Table\nCREATE TABLE FactDeaths (\n    DeathID INT PRIMARY KEY,\n    DateKey INT,\n    CountryKey INT,\n    Updated DATE,\n    Deaths INT,\n    Deaths_Change INT,\n    FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey),\n    FOREIGN KEY (CountryKey) REFERENCES DimCountry(CountryKey)\n);\n\n-- Recoveries Fact Table\nCREATE TABLE FactRecoveries (\n    RecoveryID INT PRIMARY KEY,\n    DateKey INT,\n    CountryKey INT,\n    Updated DATE,\n    Recovered INT,\n    Recovered_Change INT,\n    FOREIGN KEY (DateKey) REFERENCES DimDate(DateKey),\n    FOREIGN KEY (CountryKey) REFERENCES DimCountry(CountryKey)\n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

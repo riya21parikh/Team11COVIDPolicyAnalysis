@@ -1,0 +1,17 @@
+{
+	"name": "Policies",
+	"properties": {
+		"content": {
+			"query": "IF NOT EXISTS (SELECT * FROM sys.external_file_formats WHERE name = 'SynapseParquetFormat') \n\tCREATE EXTERNAL FILE FORMAT [SynapseParquetFormat] \n\tWITH ( FORMAT_TYPE = PARQUET)\nGO\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'ods11_covid19w2bnch6fgcsrc_dfs_core_windows_net') \n\tCREATE EXTERNAL DATA SOURCE [ods11_covid19w2bnch6fgcsrc_dfs_core_windows_net] \n\tWITH (\n\t\tLOCATION = 'abfss://ods11@covid19w2bnch6fgcsrc.dfs.core.windows.net' \n\t)\nGO\n\nCREATE EXTERNAL TABLE dbo.Policies (\n\t[CountryName] nvarchar(4000),\n\t[Date] datetime2(7),\n\t[C1_School_closing] bigint,\n\t[C1_Flag] bigint,\n\t[C2_Workplace_closing] bigint,\n\t[C2_Flag] bigint,\n\t[C3_Cancel_public_events] bigint,\n\t[C3_Flag] bigint,\n\t[C4_Restrictions_on_gatherings] bigint,\n\t[C4_Flag] bigint,\n\t[C5_Close_public_transport] bigint,\n\t[C5_Flag] bigint,\n\t[C6_Stay_at_home_requirements] bigint,\n\t[C6_Flag] bigint,\n\t[C7_Restrictions_on_internal_movement] bigint,\n\t[C7_Flag] bigint,\n\t[C8_International_travel_controls] bigint,\n\t[E1_Income_support] bigint,\n\t[E1_Flag] bigint,\n\t[E2_Debt_contract_relief] bigint,\n\t[E3_Fiscal_measures] float,\n\t[E4_International_support] float,\n\t[H1_Public_information_campaigns] bigint,\n\t[H1_Flag] bigint,\n\t[H2_Testing_policy] bigint,\n\t[H3_Contact_tracing] bigint,\n\t[H4_Emergency_investment_in_healthcare] float,\n\t[H5_Investment_in_vaccines] float,\n\t[H6_Facial_Coverings] bigint,\n\t[H6_Flag] bigint,\n\t[H7_Vaccination_policy] bigint,\n\t[H7_Flag] bigint,\n\t[H8_Protection_of_elderly_people] bigint,\n\t[H8_Flag] bigint,\n\t[M1_Wildcard] bigint,\n\t[StringencyIndex] float,\n\t[StringencyIndexForDisplay] float,\n\t[StringencyLegacyIndex] float,\n\t[StringencyLegacyIndexForDisplay] float,\n\t[GovernmentResponseIndex] float,\n\t[GovernmentResponseIndexForDisplay] float,\n\t[ContainmentHealthIndex] float,\n\t[ContainmentHealthIndexForDisplay] float,\n\t[EconomicSupportIndex] float,\n\t[EconomicSupportIndexForDisplay] float\n\t)\n\tWITH (\n\tLOCATION = 'Policies/ods_policies.parquet',\n\tDATA_SOURCE = [ods11_covid19w2bnch6fgcsrc_dfs_core_windows_net],\n\tFILE_FORMAT = [SynapseParquetFormat]\n\t)\nGO\n\n\nSELECT TOP 100 * FROM dbo.Policies\nGO",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "COVIDDB",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

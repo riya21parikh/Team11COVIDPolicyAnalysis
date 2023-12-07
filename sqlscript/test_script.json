@@ -1,0 +1,17 @@
+{
+	"name": "test_script",
+	"properties": {
+		"content": {
+			"query": "-- Date Dimension Table\nCREATE TABLE DimDate (\n    DateKey INT PRIMARY KEY,\n    FullDate DATE,\n    isWeekDay BIT,\n    DayOfWeek INT,\n    DayOfMonth INT,\n    DayOfQuarter INT,\n    DayOfYear INT,\n    DayName NVARCHAR(4000),\n    WeekOfYear INT,\n    WeekName NVARCHAR(4000),\n    MonthOfYear INT,\n    MonthName NVARCHAR(4000),\n    CalendarQuarter INT,\n    CalendarQuarterName NVARCHAR(4000),\n    CalendarYear INT,\n    FiscalMonth INT,\n    FiscalMonthName NVARCHAR(4000),\n    FiscalQuarter INT,\n    FiscalQuarterName NVARCHAR(4000),\n    FiscalYear INT\n);\n",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}

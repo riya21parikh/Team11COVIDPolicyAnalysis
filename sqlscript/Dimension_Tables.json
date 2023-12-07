@@ -1,0 +1,17 @@
+{
+	"name": "Dimension_Tables",
+	"properties": {
+		"content": {
+			"query": "-- Date Dimension Table\nCREATE TABLE DimDate (\n    DateKey INT PRIMARY KEY,\n    FullDate DATE,\n    isWeekDay BIT,\n    DayOfWeek INT,\n    DayOfMonth INT,\n    DayOfQuarter INT,\n    DayOfYear INT,\n    DayName NVARCHAR(4000),\n    WeekOfYear INT,\n    WeekName NVARCHAR(4000),\n    MonthOfYear INT,\n    MonthName NVARCHAR(4000),\n    CalendarQuarter INT,\n    CalendarQuarterName NVARCHAR(4000),\n    CalendarYear INT,\n    FiscalMonth INT,\n    FiscalMonthName NVARCHAR(4000),\n    FiscalQuarter INT,\n    FiscalQuarterName NVARCHAR(4000),\n    FiscalYear INT\n);\n\n-- Country Dimension Table\nCREATE TABLE DimCountry (\n    CountryKey INT PRIMARY KEY,\n    CountryName NVARCHAR(4000),\n    CountryCode NVARCHAR(4000)\n);\n\n-- Region Dimension Table\nCREATE TABLE DimRegion (\n    RegionKey INT PRIMARY KEY,\n    RegionName NVARCHAR(4000),\n    CountryKey INT,\n    RegionCode NVARCHAR(4000),\n    FOREIGN KEY (CountryKey) REFERENCES DimCountry(CountryKey)\n);\n\n-- Geography Dimension Table\nCREATE TABLE DimGeography (\n    GeoKey INT PRIMARY KEY,\n    CountryKey INT,\n    RegionKey INT,\n    Latitude NUMERIC(10,5),\n    Longitude NUMERIC(10,5),\n    FOREIGN KEY (CountryKey) REFERENCES DimCountry(CountryKey),\n    FOREIGN KEY (RegionKey) REFERENCES DimRegion(RegionKey)\n);\n\n-- Policy Type Dimension Table\nCREATE TABLE DimPolicyType (\n    PolicyTypeKey INT PRIMARY KEY,\n    PolicyTypeName NVARCHAR(100)\n);\n\n-- Policy Dimension Table\nCREATE TABLE DimPolicy (\n    PolicyKey INT PRIMARY KEY,\n    CountryName NVARCHAR(4000),\n    Date DATETIME2(7),\n    C1_School_closing BIGINT,\n    C1_Flag BIGINT,\n    C2_Workplace_closing BIGINT,\n    C2_Flag BIGINT,\n    C3_Cancel_public_events BIGINT,\n    C3_Flag BIGINT,\n    C4_Restrictions_on_gatherings BIGINT,\n    C4_Flag BIGINT,\n    C5_Close_public_transport BIGINT,\n    C5_Flag BIGINT,\n    C6_Stay_at_home_requirements BIGINT,\n    C6_Flag BIGINT,\n    C7_Restrictions_on_internal_movement BIGINT,\n    C7_Flag BIGINT,\n    C8_International_travel_controls BIGINT,\n    E1_Income_support BIGINT,\n    E1_Flag BIGINT,\n    E2_Debt_contract_relief BIGINT,\n    E3_Fiscal_measures FLOAT,\n    E4_International_support FLOAT,\n    H1_Public_information_campaigns BIGINT,\n    H1_Flag BIGINT,\n    H2_Testing_policy BIGINT,\n    H3_Contact_tracing BIGINT,\n    H4_Emergency_investment_in_healthcare FLOAT,\n    H5_Investment_in_vaccines FLOAT,\n    H6_Facial_Coverings BIGINT,\n    H6_Flag BIGINT,\n    H7_Vaccination_policy BIGINT,\n    H7_Flag BIGINT,\n    H8_Protection_of_elderly_people BIGINT,\n    H8_Flag BIGINT,\n    M1_Wildcard BIGINT,\n    StringencyIndex FLOAT,\n    StringencyIndexForDisplay FLOAT,\n    StringencyLegacyIndex FLOAT,\n    StringencyLegacyIndexForDisplay FLOAT,\n    GovernmentResponseIndex FLOAT,\n    GovernmentResponseIndexForDisplay FLOAT,\n    ContainmentHealthIndex FLOAT,\n    ContainmentHealthIndexForDisplay FLOAT,\n    EconomicSupportIndex FLOAT,\n    EconomicSupportIndexForDisplay FLOAT,\n    PolicyTypeKey INT,\n    FOREIGN KEY (PolicyTypeKey) REFERENCES DimPolicyType(PolicyTypeKey)\n);",
+			"metadata": {
+				"language": "sql"
+			},
+			"currentConnection": {
+				"databaseName": "master",
+				"poolName": "Built-in"
+			},
+			"resultLimit": 5000
+		},
+		"type": "SqlQuery"
+	}
+}
