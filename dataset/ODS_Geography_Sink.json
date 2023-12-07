@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "ods_geography.parquet",
+				"fileName": "ods_geography1.parquet",
 				"folderPath": "Geography",
 				"fileSystem": "ods11"
 			},

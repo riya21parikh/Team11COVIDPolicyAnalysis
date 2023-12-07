@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "ods_cases.parquet",
+				"fileName": "ods_cases1.parquet",
 				"folderPath": "Cases",
 				"fileSystem": "ods11"
 			},

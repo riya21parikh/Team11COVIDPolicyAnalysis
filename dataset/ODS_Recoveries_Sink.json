@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "ods_recoveries.parquet",
+				"fileName": "ods_recoveries1.parquet",
 				"folderPath": "Recoveries",
 				"fileSystem": "ods11"
 			},

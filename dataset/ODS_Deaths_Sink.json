@@ -10,7 +10,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileName": "ods_deaths.parquet",
+				"fileName": "ods_deaths1.parquet",
 				"folderPath": "Deaths",
 				"fileSystem": "ods11"
 			},
