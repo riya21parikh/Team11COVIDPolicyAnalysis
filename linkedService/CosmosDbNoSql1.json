@@ -7,6 +7,10 @@
 		"typeProperties": {
 			"connectionString": "AccountEndpoint=https://covid19-cosmosdb-w2bnch6fgcsrc.documents.azure.com:443/;Database=covid19;",
 			"encryptedCredential": "ew0KICAiVmVyc2lvbiI6ICIyMDE3LTExLTMwIiwNCiAgIlByb3RlY3Rpb25Nb2RlIjogIktleSIsDQogICJTZWNyZXRDb250ZW50VHlwZSI6ICJQbGFpbnRleHQiLA0KICAiQ3JlZGVudGlhbElkIjogIkRBVEFGQUNUT1JZQDI1MDlEQkRDLTg1QTItNDFCMS1BMDE5LUMwNjYwNTJFNDAxRV84NTk2NDdlMS1hMzBiLTQ3ZDMtYjcxNS04ZjkwMzdmOGQyYmYiDQp9"
+		},
+		"connectVia": {
+			"referenceName": "integrationRuntime1",
+			"type": "IntegrationRuntimeReference"
 		}
 	}
 }
