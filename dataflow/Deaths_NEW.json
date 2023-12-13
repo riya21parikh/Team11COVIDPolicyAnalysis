@@ -30,6 +30,9 @@
 				},
 				{
 					"name": "union1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -88,7 +91,16 @@
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
 				"SQLDBCOVIDMetrics, select1 union(byName: true)~> union1",
-				"union1 sink(allowSchemaDrift: true,",
+				"union1 select(mapColumn(",
+				"          ID,",
+				"          Updated,",
+				"          Deaths,",
+				"          Deaths_Change,",
+				"          Country_Region",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> sink1"
