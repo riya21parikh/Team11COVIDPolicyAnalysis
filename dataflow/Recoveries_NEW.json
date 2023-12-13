@@ -34,9 +34,6 @@
 				},
 				{
 					"name": "select1"
-				},
-				{
-					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -97,16 +94,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"Union select(mapColumn(",
-				"          ID,",
-				"          Updated,",
-				"          Recovered,",
-				"          Recovered_Change,",
-				"          Country_Region",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
+				"Union sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     truncate: true,",
@@ -118,9 +106,16 @@
 				"     mapColumn(",
 				"          ID,",
 				"          Updated,",
+				"          Confirmed,",
+				"          Confirmed_Change,",
+				"          Deaths,",
+				"          Deaths_Change,",
 				"          Recovered,",
 				"          Recovered_Change,",
-				"          Country_Region",
+				"          ISO2,",
+				"          ISO3,",
+				"          Country_Region,",
+				"          load_time",
 				"     )) ~> RecoveriesSink"
 			]
 		}
