@@ -33,9 +33,6 @@
 					"name": "Union"
 				},
 				{
-					"name": "Select"
-				},
-				{
 					"name": "select1"
 				}
 			],
@@ -81,15 +78,6 @@
 				"     format: 'parquet',",
 				"     partitionBy('hash', 1)) ~> SQLServerCOVIDMetrics",
 				"SQLDBCOVIDMetrics, select1 union(byName: true)~> Union",
-				"Union select(mapColumn(",
-				"          ID,",
-				"          Updated,",
-				"          Recovered,",
-				"          Recovered_Change,",
-				"          Country_Region",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Select",
 				"SQLServerCOVIDMetrics select(mapColumn(",
 				"          ID,",
 				"          Updated,",
@@ -106,7 +94,7 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"Select sink(allowSchemaDrift: true,",
+				"Union sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     truncate: true,",
