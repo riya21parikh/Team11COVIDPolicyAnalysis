@@ -1,5 +1,5 @@
 {
-	"name": "Cases_NEW",
+	"name": "Deaths_NEW",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -9,22 +9,18 @@
 						"referenceName": "SQLDB_COVID19Metrics_DL",
 						"type": "DatasetReference"
 					},
-					"name": "SQLDB"
+					"name": "SQLDBCOVIDMetrics"
 				},
 				{
 					"dataset": {
 						"referenceName": "SQLServer_COVID19Metrics_DL",
 						"type": "DatasetReference"
 					},
-					"name": "SQLServer"
+					"name": "SQLServerCOVIDMetrics"
 				}
 			],
 			"sinks": [
 				{
-					"dataset": {
-						"referenceName": "ODS_Cases_Sink",
-						"type": "DatasetReference"
-					},
 					"name": "sink1"
 				}
 			],
@@ -34,9 +30,6 @@
 				},
 				{
 					"name": "union1"
-				},
-				{
-					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -57,8 +50,7 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet',",
-				"     partitionBy('hash', 1)) ~> SQLDB",
+				"     format: 'parquet') ~> SQLDBCOVIDMetrics",
 				"source(output(",
 				"          ID as integer,",
 				"          Updated as date,",
@@ -78,37 +70,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet',",
-				"     partitionBy('hash', 1)) ~> SQLServer",
-				"SQLServer select(mapColumn(",
-				"          ID,",
-				"          Updated,",
-				"          Confirmed,",
-				"          Confirmed_Change,",
-				"          Country_Region",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"SQLDB, select1 union(byName: true)~> union1",
-				"union1 select(mapColumn(",
-				"          ID,",
-				"          Updated,",
-				"          Confirmed,",
-				"          Confirmed_Change,",
-				"          Country_Region",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
-				"     validateSchema: false,",
-				"     format: 'parquet',",
-				"     truncate: true,",
-				"     umask: 0022,",
-				"     preCommands: [],",
-				"     postCommands: [],",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true,",
-				"     mapColumn(",
+				"     format: 'parquet') ~> SQLServerCOVIDMetrics",
+				"SQLServerCOVIDMetrics select(mapColumn(",
 				"          ID,",
 				"          Updated,",
 				"          Confirmed,",
@@ -121,7 +84,14 @@
 				"          ISO3,",
 				"          Country_Region,",
 				"          load_time",
-				"     )) ~> sink1"
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"SQLDBCOVIDMetrics, select1 union(byName: true)~> union1",
+				"union1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
