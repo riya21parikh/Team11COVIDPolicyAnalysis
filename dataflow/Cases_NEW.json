@@ -30,10 +30,13 @@
 			],
 			"transformations": [
 				{
+					"name": "union1"
+				},
+				{
 					"name": "select1"
 				},
 				{
-					"name": "union1"
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -77,7 +80,24 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet',",
 				"     partitionBy('hash', 1)) ~> SQLServer",
+				"SQLDB, select1 union(byName: true)~> union1",
 				"SQLServer select(mapColumn(",
+				"          ID,",
+				"          Updated,",
+				"          Confirmed,",
+				"          Confirmed_Change,",
+				"          Deaths,",
+				"          Deaths_Change,",
+				"          Recovered,",
+				"          Recovered_Change,",
+				"          ISO2,",
+				"          ISO3,",
+				"          Country_Region,",
+				"          load_time",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"union1 select(mapColumn(",
 				"          ID,",
 				"          Updated,",
 				"          Confirmed,",
@@ -85,9 +105,8 @@
 				"          Country_Region",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1",
-				"SQLDB, select1 union(byName: true)~> union1",
-				"union1 sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     truncate: true,",

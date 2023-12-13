@@ -34,6 +34,9 @@
 				},
 				{
 					"name": "select1"
+				},
+				{
+					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -94,7 +97,16 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"Union sink(allowSchemaDrift: true,",
+				"Union select(mapColumn(",
+				"          ID,",
+				"          Updated,",
+				"          Recovered,",
+				"          Recovered_Change,",
+				"          Country_Region",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select2",
+				"select2 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     truncate: true,",
