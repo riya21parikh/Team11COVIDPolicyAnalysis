@@ -94,7 +94,7 @@
 				"SQLDB, select1 union(byName: true,",
 				"     partitionBy('key',",
 				"          0,",
-				"          ERROR_FUNCTION('')",
+				"          ID",
 				"     ))~> union1",
 				"union1 sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
