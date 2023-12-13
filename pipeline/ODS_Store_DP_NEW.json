@@ -40,7 +40,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ODS_Deaths_DF",
+						"referenceName": "ODS_Deaths_DF_Working",
 						"type": "DataFlowReference"
 					},
 					"integrationRuntime": {
@@ -64,7 +64,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ODS_Recoveries_DF",
+						"referenceName": "ODS_Recoveries_DF_Working",
 						"type": "DataFlowReference"
 					},
 					"integrationRuntime": {

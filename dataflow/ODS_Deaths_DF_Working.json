@@ -1,5 +1,5 @@
 {
-	"name": "ODS_Deaths_DF",
+	"name": "ODS_Deaths_DF_Working",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {

@@ -1,9 +1,9 @@
 {
-	"name": "pipeline2",
+	"name": "Deaths_Working",
 	"properties": {
 		"activities": [
 			{
-				"name": "Data flow1",
+				"name": "ODS_Deaths_DF",
 				"type": "ExecuteDataFlow",
 				"dependsOn": [],
 				"policy": {
@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "Cases_NEW",
+						"referenceName": "ODS_Deaths_DF_Working",
 						"type": "DataFlowReference"
 					},
 					"integrationRuntime": {
