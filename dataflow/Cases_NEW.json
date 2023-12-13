@@ -113,14 +113,7 @@
 				"          Updated,",
 				"          Confirmed,",
 				"          Confirmed_Change,",
-				"          Deaths,",
-				"          Deaths_Change,",
-				"          Recovered,",
-				"          Recovered_Change,",
-				"          ISO2,",
-				"          ISO3,",
-				"          Country_Region,",
-				"          load_time",
+				"          Country_Region",
 				"     )) ~> sink1"
 			]
 		}
