@@ -90,7 +90,7 @@
 				"Select sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
-				"     partitionFileNames:['Cases'],",
+				"     partitionFileNames:['Cases.parquet'],",
 				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
