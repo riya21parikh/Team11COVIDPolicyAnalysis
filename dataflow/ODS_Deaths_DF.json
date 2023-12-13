@@ -33,7 +33,7 @@
 					"name": "Union"
 				},
 				{
-					"name": "Select"
+					"name": "FiveColumns"
 				}
 			],
 			"scriptLines": [
@@ -54,7 +54,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet') ~> SQLDBCOVIDMetrics",
+				"     format: 'parquet',",
+				"     partitionBy('hash', 1)) ~> SQLDBCOVIDMetrics",
 				"source(output(",
 				"          ID as integer,",
 				"          Updated as date,",
@@ -74,7 +75,8 @@
 				"     allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     ignoreNoFilesFound: false,",
-				"     format: 'parquet') ~> SQLServerCOVIDMetrics",
+				"     format: 'parquet',",
+				"     partitionBy('hash', 1)) ~> SQLServerCOVIDMetrics",
 				"SQLDBCOVIDMetrics, SQLServerCOVIDMetrics union(byName: true)~> Union",
 				"Union select(mapColumn(",
 				"          ID,",
@@ -84,15 +86,18 @@
 				"          Country_Region",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Select",
-				"Select sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> FiveColumns",
+				"FiveColumns sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
+				"     partitionFileNames:['Deaths.parquet'],",
+				"     truncate: true,",
 				"     umask: 0022,",
 				"     preCommands: [],",
 				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> DeathsSink"
+				"     skipDuplicateMapOutputs: true,",
+				"     partitionBy('hash', 1)) ~> DeathsSink"
 			]
 		}
 	}

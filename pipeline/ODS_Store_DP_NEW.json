@@ -16,7 +16,7 @@
 				"userProperties": [],
 				"typeProperties": {
 					"dataflow": {
-						"referenceName": "ODS_Cases_DF",
+						"referenceName": "ODS_Cases_DF_Working",
 						"type": "DataFlowReference"
 					},
 					"integrationRuntime": {

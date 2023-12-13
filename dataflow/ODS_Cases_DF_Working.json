@@ -1,5 +1,5 @@
 {
-	"name": "ODS_Cases_DF",
+	"name": "ODS_Cases_DF_Working",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -33,7 +33,7 @@
 					"name": "Union"
 				},
 				{
-					"name": "Select"
+					"name": "FiveColumns"
 				}
 			],
 			"scriptLines": [
@@ -86,8 +86,8 @@
 				"          Country_Region",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> Select",
-				"Select sink(allowSchemaDrift: true,",
+				"     skipDuplicateMapOutputs: true) ~> FiveColumns",
+				"FiveColumns sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
 				"     format: 'parquet',",
 				"     partitionFileNames:['Cases.parquet'],",
