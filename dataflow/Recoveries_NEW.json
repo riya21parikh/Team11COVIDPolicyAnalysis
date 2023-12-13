@@ -1,5 +1,5 @@
 {
-	"name": "Deaths_NEW",
+	"name": "Recoveries_NEW",
 	"properties": {
 		"type": "MappingDataFlow",
 		"typeProperties": {
@@ -21,18 +21,22 @@
 			],
 			"sinks": [
 				{
-					"name": "sink1"
+					"dataset": {
+						"referenceName": "ODS_Recoveries_Sink",
+						"type": "DatasetReference"
+					},
+					"name": "RecoveriesSink"
 				}
 			],
 			"transformations": [
 				{
+					"name": "Union"
+				},
+				{
+					"name": "Select"
+				},
+				{
 					"name": "select1"
-				},
-				{
-					"name": "union1"
-				},
-				{
-					"name": "select2"
 				}
 			],
 			"scriptLines": [
@@ -76,6 +80,16 @@
 				"     ignoreNoFilesFound: false,",
 				"     format: 'parquet',",
 				"     partitionBy('hash', 1)) ~> SQLServerCOVIDMetrics",
+				"SQLDBCOVIDMetrics, select1 union(byName: true)~> Union",
+				"Union select(mapColumn(",
+				"          ID,",
+				"          Updated,",
+				"          Recovered,",
+				"          Recovered_Change,",
+				"          Country_Region",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> Select",
 				"SQLServerCOVIDMetrics select(mapColumn(",
 				"          ID,",
 				"          Updated,",
@@ -92,20 +106,14 @@
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
 				"     skipDuplicateMapOutputs: true) ~> select1",
-				"SQLDBCOVIDMetrics, select1 union(byName: true)~> union1",
-				"union1 select(mapColumn(",
-				"          ID,",
-				"          Updated,",
-				"          Deaths,",
-				"          Deaths_Change,",
-				"          Country_Region",
-				"     ),",
-				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select2",
-				"select2 sink(allowSchemaDrift: true,",
+				"Select sink(allowSchemaDrift: true,",
 				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> sink1"
+				"     skipDuplicateMapOutputs: true) ~> RecoveriesSink"
 			]
 		}
 	}
