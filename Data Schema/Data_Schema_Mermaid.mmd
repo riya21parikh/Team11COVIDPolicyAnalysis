@@ -1,0 +1,71 @@
+erDiagram
+    CASES ||--o{ DATE : "has"
+    CASES ||--o{ GEOGRAPHY : "located_in"
+    
+    DEATHS ||--o{ DATE : "has"
+    DEATHS ||--o{ GEOGRAPHY : "located_in"
+    
+    RECOVERIES ||--o{ DATE : "has"
+    RECOVERIES ||--o{ GEOGRAPHY : "located_in"
+    
+    POLICIES ||--o{ DATE : "defined_on"
+    POLICIES ||--o{ GEOGRAPHY : "applied_in"
+    
+    POPULATION-DENSITY ||--o{ GEOGRAPHY : "describes"
+    LOBSTER-EXPORTS ||--o{ GEOGRAPHY : "originates_from"
+    
+    DATE {
+        string FullDate PK
+    }
+    
+    GEOGRAPHY {
+        string Country PK
+        string CountryCode
+        float Latitude
+        float Longitude
+    }
+    
+    POLICIES {
+        string Country FK
+        string Date FK
+        string ClosePublicTransportation
+        string TestingPolicy
+    }
+    
+    CASES {
+        int ID PK
+        string Country_Region FK
+        float CasesPer100k
+        int Confirmed
+        int Confirmed_Change
+        string Date FK
+    }
+    
+    DEATHS {
+        int ID PK
+        string Country_Region FK
+        int Deaths
+        int Deaths_Change
+        string Date FK
+    }
+    
+    RECOVERIES {
+        int ID PK
+        string Country_Region FK
+        int Recovered
+        int Recovered_Change
+        string Date FK
+    }
+    
+    POPULATION-DENSITY {
+        string Country_Region FK
+        float Area
+        float Density
+        int Population
+    }
+    
+    LOBSTER-EXPORTS {
+        string Country FK
+        string Month
+        int Total
+    }
