@@ -1,0 +1,48 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "vulnerabilityAssessments_Default_storageContainerPath": {
+            "value": null
+        },
+        "vulnerabilityAssessments_Default_storageContainerPath_1": {
+            "value": null
+        },
+        "virtualMachines_covid19_name": {
+            "value": null
+        },
+        "workspaces_team11synapse_name": {
+            "value": null
+        },
+        "virtualNetworks_covid19_VNet_name": {
+            "value": null
+        },
+        "networkInterfaces_covid19_NIC_name": {
+            "value": null
+        },
+        "publicIPAddresses_covid19_PIP_name": {
+            "value": null
+        },
+        "storageAccounts_covid19withhn_name": {
+            "value": null
+        },
+        "networkSecurityGroups_covid19_NSG_name": {
+            "value": null
+        },
+        "servers_covid19_sqlserver_w2bnch6fgcsrc_name": {
+            "value": null
+        },
+        "sqlVirtualMachines_covid19_name": {
+            "value": null
+        },
+        "storageAccounts_covid19w2bnch6fgcsrc_name": {
+            "value": null
+        },
+        "schedules_shutdown_computevm_covid19_name": {
+            "value": null
+        },
+        "databaseAccounts_covid19_cosmosdb_w2bnch6fgcsrc_name": {
+            "value": null
+        }
+    }
+}

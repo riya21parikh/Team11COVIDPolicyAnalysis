@@ -1,0 +1,12 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "storageAccounts_covid19w2bnch6fgcsrc_name": {
+            "value": null
+        },
+        "workspaces_team11synapse_externalid": {
+            "value": null
+        }
+    }
+}
