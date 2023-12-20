@@ -12,10 +12,29 @@ erDiagram
     POLICIES ||--o{ GEOGRAPHY : "applied_in"
     
     POPULATION-DENSITY ||--o{ GEOGRAPHY : "describes"
-    LOBSTER-EXPORTS ||--o{ GEOGRAPHY : "originates_from"
+    LOBSTER-DATA ||--o{ GEOGRAPHY : "originates_from"
     
     DATE {
-        string FullDate PK
+        int DateKey PK
+        date FullDate
+        bit isWeekDay
+        int DayOfWeek
+        int DayOfMonth
+        int DayOfQuarter
+        int DayOfYear
+        nvarchar(4000) DayName
+        int WeekOfYear
+        nvarchar(4000) WeekName
+        int MonthOfYear
+        nvarchar(4000) MonthName
+        int CalendarQuarter
+        nvarchar(4000) CalendarQuarterName
+        int CalendarYear
+        int FiscalMonth
+        nvarchar(4000) FiscalMonthName
+        int FiscalQuarter
+        nvarchar(4000) FiscalQuarterName
+        int FiscalYear
     }
     
     GEOGRAPHY {
@@ -26,19 +45,59 @@ erDiagram
     }
     
     POLICIES {
-        string Country FK
-        string Date FK
-        string ClosePublicTransportation
-        string TestingPolicy
+        string CountryName FK
+        date Date FK
+        bigint C1_School_closing
+        bigint C1_Flag
+        bigint C2_Workplace_closing
+        bigint C2_Flag
+        bigint C3_Cancel_public_events
+        bigint C3_Flag
+        bigint C4_Restrictions_on_gatherings
+        bigint C4_Flag
+        bigint C5_Close_public_transport
+        bigint C5_Flag
+        bigint C6_Stay_at_home_requirements
+        bigint C6_Flag
+        bigint C7_Restrictions_on_internal_movement
+        bigint C7_Flag
+        bigint C8_International_travel_controls
+        bigint E1_Income_support
+        bigint E1_Flag
+        bigint E2_Debt_contract_relief
+        float E3_Fiscal_measures
+        float E4_International_support
+        bigint H1_Public_information_campaigns
+        bigint H1_Flag
+        bigint H2_Testing_policy
+        bigint H3_Contact_tracing
+        float H4_Emergency_investment_in_healthcare
+        float H5_Investment_in_vaccines
+        bigint H6_Facial_Coverings
+        bigint H6_Flag
+        bigint H7_Vaccination_policy
+        bigint H7_Flag
+        bigint H8_Protection_of_elderly_people
+        bigint H8_Flag
+        bigint M1_Wildcard
+        float StringencyIndex
+        float StringencyIndexForDisplay
+        float StringencyLegacyIndex
+        float StringencyLegacyIndexForDisplay
+        float GovernmentResponseIndex
+        float GovernmentResponseIndexForDisplay
+        float ContainmentHealthIndex
+        float ContainmentHealthIndexForDisplay
+        float EconomicSupportIndex
+        float EconomicSupportIndexForDisplay
     }
     
     CASES {
         int ID PK
         string Country_Region FK
-        float CasesPer100k
         int Confirmed
         int Confirmed_Change
-        string Date FK
+        date Updated FK
     }
     
     DEATHS {
@@ -46,7 +105,7 @@ erDiagram
         string Country_Region FK
         int Deaths
         int Deaths_Change
-        string Date FK
+        date Updated FK
     }
     
     RECOVERIES {
@@ -54,18 +113,18 @@ erDiagram
         string Country_Region FK
         int Recovered
         int Recovered_Change
-        string Date FK
+        date Updated FK
     }
     
     POPULATION-DENSITY {
-        string Country_Region FK
-        float Area
-        float Density
+        string Country FK
+        float Density_km2
         int Population
+        float Area_km2
     }
     
-    LOBSTER-EXPORTS {
+    LOBSTER-DATA {
         string Country FK
-        string Month
-        int Total
+        int Year
+        int Monthly_Exports
     }
